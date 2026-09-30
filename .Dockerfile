@@ -12,4 +12,5 @@ RUN deno task build
 EXPOSE 3000
 ENV PORT=3000
 
-CMD ["deno", "task", "dev"]
+# Run directly with --allow-sys added to permission flags
+CMD ["deno", "run", "--allow-net", "--allow-env", "--allow-read", "--allow-write", "--allow-sys", "build/index.js"]
