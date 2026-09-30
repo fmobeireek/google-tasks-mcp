@@ -12,5 +12,5 @@ RUN deno task build
 EXPOSE 3000
 ENV PORT=3000
 
-# Run directly with --allow-sys added to permission flags
-CMD ["deno", "run", "--allow-net", "--allow-env", "--allow-read", "--allow-write", "--allow-sys", "build/index.js"]
+# Run with full permissions (-A) to support all @deno/kv native bindings
+CMD ["deno", "run", "-A", "build/index.js"]
