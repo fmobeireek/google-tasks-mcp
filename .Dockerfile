@@ -2,14 +2,12 @@ FROM denoland/deno:alpine
 
 WORKDIR /app
 
-# Copy repo files
+# Copy project files
 COPY . .
 
-# Install dependencies using Deno so @deno/kv and node_modules link correctly
+# Install dependencies and build JS output to /build/index.js
 RUN deno install
-
-# Cache/Build entrypoint
-RUN deno cache src/index.ts
+RUN deno task build
 
 EXPOSE 3000
 ENV PORT=3000
